@@ -1,0 +1,71 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="row mt-3 ">
+    <div class="col-6 offset-3">
+        <h1>Signup on WanderLust</h1>
+        <form action="/signup" method="post" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label  for="username" class="form-label" >Username</label>
+                <input required type="text" id="username"placeholder="Enter your Username" name="username" placeholder="" class="form-control">
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+
+          <div class="mb-3">
+  <label for="email" class="form-label">Email</label>
+  <input 
+    required 
+    type="email" 
+    id="email" 
+    name="email" 
+    placeholder="Enter your email"
+    class="form-control"
+    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    title="Enter a valid email address (e.g., example@domain.com)">
+  <small id="emailHelp" class="text-danger"></small>
+</div>
+        <div class="mb-3">
+  <label for="password" class="form-label">Password</label>
+  <input 
+    required 
+    type="password"  
+    id="password" 
+    name="password" 
+    class="form-control"
+    placeholder="Enter password">
+  <small id="passwordHelp" class="text-danger"></small>
+</div>
+
+            <button class="btn btn-success mb-3">Signup</button>
+        </form>
+        <script>
+
+            document.getElementById("email").addEventListener("input", function() {
+  const email = this.value;
+  const helpText = document.getElementById("emailHelp");
+
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+
+  if (!regex.test(email)) {
+    helpText.textContent = "Please enter a valid email address.";
+  } else {
+    helpText.textContent = "";
+  }
+});
+
+
+
+document.getElementById("password").addEventListener("input", function() {
+  const password = this.value;
+  const helpText = document.getElementById("passwordHelp");
+
+  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+
+  if (!regex.test(password)) {
+    helpText.textContent = "Password must be 8+ chars with uppercase, lowercase, number, and symbol.";
+  } else {
+    helpText.textContent = "";
+  }
+});
+</script>
+    </div>
+</div>
